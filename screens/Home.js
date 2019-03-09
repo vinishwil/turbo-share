@@ -1,16 +1,19 @@
 import React, { Component } from "react";
+import Modal from 'react-native-modalbox';
 import {
     View,
     Text,
-    StyleSheet, SafeAreaView, ScrollView,RefreshControl
+    StyleSheet, SafeAreaView, ScrollView, RefreshControl, TouchableHighlight
 } from "react-native";
 import { connect } from 'react-redux';
 var axios = require('axios');
 var url = 'https://www.bloombergquint.com/feapi/markets/indices/global-markets?tab=index';
 import SectorIndicesList from '../components/SectorIndicesList'
 import GlobaMarketData from "../components/GlobalMarketData";
+import SectorIndicesStock from '../components/SectorIndicesStock'
 
 const indices = [
+    'NIFTY 50',
     'NIFTY BANK',
     'NIFTY AUTO',
     'NIFTY FIN SERVICE',
@@ -31,7 +34,9 @@ class Home extends Component {
             globalMarketData: {},
             isLoading: true,
             isGlobalMarketLoading: true,
-            refreshing: false
+            refreshing: false,
+            modalVisible: false,
+            selectedIndices: ''
         }
     }
     static navigationOptions = {
@@ -40,7 +45,6 @@ class Home extends Component {
     };
     componentWillMount() {
         axios.get(url).then((response) => {
-            console.log(response);
             let globalData = response.data.data;
             this.setState({
                 globalMarketData: globalData,
@@ -51,13 +55,18 @@ class Home extends Component {
     }
 
     _onRefresh = () => {
-        console.log('refresh')
         this.setState({
             refreshing: true
         }, () => {
             this.componentWillMount();
         })
     }
+    openModalData = (symbol) => () => {
+        this.setState({
+            modalVisible: true,
+            selectedIndices: symbol
+        });
+    };
     render() {
         return (
             <View style={styles.container}>
@@ -66,14 +75,15 @@ class Home extends Component {
                 </View>
                 <ScrollView style={styles.sectorContainer}>
                     <View style={styles.sectorContainer}>
-                        <SectorIndicesList state={this.state} data={this.props.nseLive} filterList={indices} />
+                        <SectorIndicesList state={this.state} data={this.props.nseLive}
+                            filterList={indices} openModalData={(symbol) => this.openModalData(symbol)} />
                     </View>
                 </ScrollView>
                 <View style={styles.indicesHeader}>
                     <Text style={styles.indicesText}>Global Market</Text>
                 </View>
-                <ScrollView style={styles.sectorContainer}  
-                refreshControl={
+                <ScrollView style={styles.sectorContainer}
+                    refreshControl={
                         <RefreshControl
                             refreshing={this.state.refreshing}
                             onRefresh={this._onRefresh}
@@ -83,7 +93,19 @@ class Home extends Component {
                         <GlobaMarketData state={this.state} data={this.state.globalMarketData} />
                     </View>
                 </ScrollView>
-            </View>
+                <Modal style={styles.modal}
+                    position={'bottom'}
+                    isOpen={this.state.modalVisible}
+                    onClosed={() => this.setState({ modalVisible: false })}
+                    backdropOpacity={0.5}
+                    swipeArea={200}
+                    backdropPressToClose={false}
+                    entry={'bottom'}
+                    coverScreen={false}
+                >
+                   <SectorIndicesStock indicesSelected = {this.state.selectedIndices}/>
+                </Modal>
+            </View> 
         );
     }
 }
@@ -114,5 +136,11 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         marginLeft: 15,
         color: '#404040',
-    }
+    },
+    modal: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+        backgroundColor: "#fff"
+    },
 });

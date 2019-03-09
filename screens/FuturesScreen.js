@@ -13,7 +13,7 @@ class FuturesScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>FuturesScreen</Text>
+                <Text style={styles.contentText}>Screen Not Avaliable</Text>
             </View>
         );
     }
@@ -26,5 +26,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff'
+    },
+    contentText:{
+        fontWeight:'bold',
+        color:'#dddd',
+        fontSize:24
     }
 });

@@ -29,7 +29,7 @@ class GlobaMarketData extends Component {
                         <Text style={Object.assign({}, styles.changePrice, colourIndicator)}> {(item['points-changed'].toFixed(2))}</Text>
                     </View>
                     <View style={styles.percentageChangeDiv}>
-                        <Text style={Object.assign({}, styles.percentageChange, colourIndicator)}> {(item['points-changed-percentage'].toFixed(2))}</Text>
+                        <Text style={Object.assign({}, styles.percentageChange, colourIndicator)}> {(item['points-changed-percentage'].toFixed(2)+'%')}</Text>
                     </View>
                 </View>
                 <View style={styles.listSeperator}>

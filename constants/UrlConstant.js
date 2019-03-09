@@ -1,0 +1,14 @@
+exports.NiftyBank = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/bankNiftyStockWatch.json';
+exports.NiftyAuto = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxAutoStockWatch.json';
+exports.NiftyFinService = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxFinanceStockWatch.json';
+exports.NiftyFmcg = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxFMCGStockWatch.json';
+exports.NiftyIt = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxitStockWatch.json';
+exports.NiftyMedia = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxMediaStockWatch.json';
+exports.NiftyMetal = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxMetalStockWatch.json';
+exports.NiftyPharma = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxPharmaStockWatch.json';
+exports.NiftyPsuBank = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxPSUStockWatch.json';
+exports.NiftyReality = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxRealtyStockWatch.json';
+exports.NiftyPvtBank = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/niftyPvtBankStockWatch.json';
+exports.Nifty50 = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/niftyStockWatch.json';
+exports.NiftyNext50 = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/juniorNiftyStockWatch.json';
+exports.NiftyEnergy = 'https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/cnxEnergyStockWatch.json';

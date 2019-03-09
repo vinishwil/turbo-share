@@ -21,7 +21,7 @@ const LiveNseBseData = (props) => {
     let niftyData = props.nseData[0];
     let bseData = props.bseData[0];
     let colourIndicator;
-    if (parseInt(niftyData.last.replace(',', '')) >= parseInt(niftyData.previousClose)) {
+    if (parseInt(niftyData.last.replace(',', '')) >= parseInt(niftyData.previousClose.replace(',', ''))) {
       colourIndicator = styles.backgroundGreen;
     } else {
       colourIndicator = styles.backgroundRed;

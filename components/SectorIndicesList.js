@@ -21,7 +21,7 @@ class ActiveGainers extends Component {
             colourIndicator = styles.defaultRed;
         }
         return (
-            <TouchableOpacity style={styles.container} >
+            <TouchableOpacity style={styles.container} onPress={this.props.openModalData(item.indexName)}>
                 <View style={styles.firstRowContainer}>
                 <View style={styles.symbolTextDiv}>
                 <Text style={styles.symbolText}> {item.indexName}</Text>
@@ -35,7 +35,7 @@ class ActiveGainers extends Component {
                         - parseFloat(item.previousClose.replace(',', ''))).toFixed(2)}</Text>
                 </View>
                 <View style={styles.percentageChangeDiv}>
-                <Text style={Object.assign({}, styles.percentageChange, colourIndicator)}> {item.percChange}</Text>
+                <Text style={Object.assign({}, styles.percentageChange, colourIndicator)}> {item.percChange+'%'}</Text>
                 </View>
                 </View>
                 <View style={styles.listSeperator}>

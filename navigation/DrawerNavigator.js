@@ -6,6 +6,7 @@ import customDrawerComponent from '../components/drawerContent';
 import { Icon } from 'expo';  
 import ActiveStocksTab from "../screens/ActiveStocks/ActiveStocksTab";
 import TopStocks from '../screens/TopStocks/TopStocks';
+import ScreenersTab from "../screens/Screeners/ScreenersTab";
 
 const drawer = createDrawerNavigator({
     Home:{
@@ -30,6 +31,14 @@ const drawer = createDrawerNavigator({
       drawerLabel:'Top Stocks',
       drawerIcon : ({tintColor}) => (
             <Icon.Ionicons name='ios-trending-up' style={{fontSize:24,color:tintColor}}/>
+        )}                                                                              
+  },
+  Screeners:{
+    screen:ScreenersTab, 
+    navigationOptions :{
+      drawerLabel:'Screeners',
+      drawerIcon : ({tintColor}) => (
+            <Icon.Ionicons name='ios-pulse' style={{fontSize:24,color:tintColor}}/>
         )}                                                                              
   }}
   ,{
