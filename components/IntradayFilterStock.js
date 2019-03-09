@@ -26,15 +26,35 @@ class IntradayFilterStock extends Component {
                 }
                 body={
                     <View style={styles.mainContainer}>
-                        {/* <Text style={{ paddingLeft: 15 }}>{item.stock+item.time+item.type}</Text> */}
                         <View style={styles.firstDiv}>
-                            {/* <Text style={{ paddingLeft: 15 }}>{item.stock+item.time+item.type}</Text> */}
-                            <Avatar rounded title={item.type}
-                            overlayContainerStyle={{backgroundColor: '#dddd'}} />
+                            <Avatar rounded title={item.type} 
+                                overlayContainerStyle={{ backgroundColor: '#dddd' }} />
                         </View>
                         <View style={styles.secondDiv}>
-                            {/* <Text style={{ paddingLeft: 15 }}>{item.stock+item.time+item.type}</Text> */}
-
+                            <View style={styles.stockDiv}>
+                                <View style={styles.stockNameDiv}>
+                                    <Text style={styles.stockSymbolText}>{item.stock}</Text>
+                                    <Text style={styles.stockNameText}>{item.stock}</Text>
+                                </View>
+                                <View style={styles.entryPriceDiv}>
+                                    <Text style={styles.entryPriceValue}>{item.closePrice}</Text>
+                                    <Text style={styles.entryPriceText}>Entry Price</Text>
+                                </View>
+                            </View>
+                            <View style={styles.priceDiv}>
+                                <View style={styles.exitPriceDiv}>
+                                    <Text style={styles.exitPriceText}>Exit Price</Text>
+                                    <Text style={styles.exitPriceValue}>{(item.closePrice + (item.closePrice * 0.005)).toFixed(2)}</Text>
+                                </View>
+                                <View style={styles.stopLossDiv}>
+                                    <Text style={styles.stopLossText}>Stop Loss</Text>
+                                    <Text style={styles.stopLossValue}>{(item.closePrice - (item.closePrice * 0.005)).toFixed(2)}</Text>
+                                </View>
+                                <View style={styles.currentPriceDiv}>
+                                    <Text style={styles.currentPriceText}>Current Price</Text>
+                                    <Text style={styles.currentPriceValue}>{item.closePrice}</Text>
+                                </View>
+                            </View>
                         </View>
                     </View>
                 }
@@ -44,14 +64,6 @@ class IntradayFilterStock extends Component {
                     </Button>
                 }
             />
-            //      <View style={styles.firstRowContainer}>
-            //     <View style={styles.symbolTextDiv}>
-            //     <Text style={styles.symbolText}> {item.stock}</Text>
-            //     </View>
-            //     </View>
-            //     <View style={styles.listSeperator}>
-            // </View> 
-            //  </TouchableOpacity> 
         )
     }
 
@@ -95,26 +107,101 @@ const styles = StyleSheet.create({
         color: Colors.defaultRed,
     },
     mainContainer: {
-        flexDirection: 'column',
+        flex: 1,
+        flexDirection: 'row',
         alignItems: 'center',
-        height: 60  
-
     },
     firstDiv: {
-        flex: 2,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding:10,
-        marginTop:18
+        paddingLeft: 10,
+
     },
-    avatar:{
-marginLeft:20
+    avatar: {
+        marginLeft: 10
     },
     secondDiv: {
-        flex: 5,
-        alignItems: 'flex-start'
-
-    }
-
+        flex: 7,
+        alignItems: 'flex-start',
+        flexDirection: 'column',
+    },
+    stockDiv: {
+        flex: 1,
+        flexDirection: 'row',
+        paddingBottom: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#bfbfbf',
+        marginLeft: 15
+    },
+    priceDiv: {
+        flex: 1,
+        flexDirection: 'row',
+        paddingTop: 10,
+    },
+    stockNameDiv: {
+        flex: 1,
+    },
+    entryPriceDiv: {
+        flex: 1,
+        alignItems: 'flex-end'
+    },
+    exitPriceDiv: {
+        flex: 1,
+        paddingLeft: 15,
+    },
+    stopLossDiv: {
+        flex: 1,
+        paddingLeft: 15,
+        borderLeftWidth: 1,
+        borderLeftColor: '#bfbfbf',
+    },
+    currentPriceDiv: {
+        flex: 1,
+        paddingLeft: 15,
+        borderLeftWidth: 1,
+        // borderLeftColor: '#f2f2f2',
+        borderLeftColor: '#bfbfbf',
+    },
+    exitPriceText: {
+        color: '#a6a6a6',
+        fontSize: 14,
+    },
+    exitPriceValue: {
+        paddingTop: 1,
+        color: '#262626'
+    },
+    entryPriceText: {
+        color: '#a6a6a6',
+        fontSize: 14,
+    },
+    entryPriceValue: {
+        paddingTop: 1,
+        color: '#333333',
+        fontWeight:'bold'
+    },
+    stopLossText: {
+        color: '#a6a6a6',
+        fontSize: 14,
+    },
+    stopLossValue: {
+        paddingTop: 1,
+        color: '#262626'
+    },
+    currentPriceText: {
+        color: '#a6a6a6',
+        fontSize: 14,
+    },
+    currentPriceValue: {
+        paddingTop: 1,
+    },
+    stockSymbolText: {
+        color: '#262626'
+    },
+    stockNameText: {
+        paddingTop: 1,
+        color: '#a6a6a6',
+        fontSize: 10,
+    },
 
 });     

@@ -38,6 +38,7 @@ class IntradayScreen extends Component {
         let list = require('../constants/StockList')[this.state.selected];
         list.map((item) => {
             NSEAPI.getCandleStickData(item.symbol, 1, false).then((response) => {
+                console.log(response.data)
                 this.checkForStocks(response.data, item); 
             }).catch((error) => {
                 console.log(error);
@@ -108,11 +109,11 @@ class IntradayScreen extends Component {
                 openPrice = [];
             }
             if (checkList[2] > checkList[1] && checkList[1] !=0 && checkList[2] != 0) {
-                let updateMap = { stock: item.name, closePrice: value.g1C, time: value.date ,type:'B'};
+                let updateMap = { stock: item.name, closePrice: parseFloat(value.g1C), time: value.date ,type:'B'};
                 filteredMap[item.name] = updateMap;
             }    
             if (sellCheckList[2] < sellCheckList[1] && sellCheckList[1] !=0 && sellCheckList[2] != 0) {
-                let updateMap = { stock: item.name, closePrice: value.g1C, time: value.date ,type:'S'};
+                let updateMap = { stock: item.name, closePrice: parseFloat(value.g1C), time: value.date ,type:'S'};
                 filteredMap[item.name] = updateMap; 
             }
             // this.setState({
