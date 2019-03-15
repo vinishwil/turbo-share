@@ -26,33 +26,40 @@ class IntradayFilterStock extends Component {
                 }
                 body={
                     <View style={styles.mainContainer}>
-                        <View style={styles.firstDiv}>
-                            <Avatar rounded title={item.type} 
-                                overlayContainerStyle={{ backgroundColor: '#dddd' }} />
-                        </View>
-                        <View style={styles.secondDiv}>
-                            <View style={styles.stockDiv}>
-                                <View style={styles.stockNameDiv}>
-                                    <Text style={styles.stockSymbolText}>{item.stock}</Text>
-                                    <Text style={styles.stockNameText}>{item.stock}</Text>
-                                </View>
-                                <View style={styles.entryPriceDiv}>
-                                    <Text style={styles.entryPriceValue}>{item.closePrice}</Text>
-                                    <Text style={styles.entryPriceText}>Entry Price</Text>
-                                </View>
+                        <View style={styles.timeDiv}>
+                            <View style={styles.timeInnerDiv}>
+                                <Text style={styles.timeText}>{item.time}</Text>
                             </View>
-                            <View style={styles.priceDiv}>
-                                <View style={styles.exitPriceDiv}>
-                                    <Text style={styles.exitPriceText}>Exit Price</Text>
-                                    <Text style={styles.exitPriceValue}>{(item.closePrice + (item.closePrice * 0.005)).toFixed(2)}</Text>
+                        </View>
+                        <View style={styles.contentDiv}>
+                            <View style={styles.firstDiv}>
+                                <Avatar rounded title={item.type}
+                                    overlayContainerStyle={{ backgroundColor: '#dddd' }} />
+                            </View>
+                            <View style={styles.secondDiv}>
+                                <View style={styles.stockDiv}>
+                                    <View style={styles.stockNameDiv}>
+                                        <Text style={styles.stockSymbolText}>{item.stock}</Text>
+                                        <Text style={styles.stockNameText}>{item.stock}</Text>
+                                    </View>
+                                    <View style={styles.entryPriceDiv}>
+                                        <Text style={styles.entryPriceValue}>{item.closePrice}</Text>
+                                        <Text style={styles.entryPriceText}>Entry Price</Text>
+                                    </View>
                                 </View>
-                                <View style={styles.stopLossDiv}>
-                                    <Text style={styles.stopLossText}>Stop Loss</Text>
-                                    <Text style={styles.stopLossValue}>{(item.closePrice - (item.closePrice * 0.005)).toFixed(2)}</Text>
-                                </View>
-                                <View style={styles.currentPriceDiv}>
-                                    <Text style={styles.currentPriceText}>Current Price</Text>
-                                    <Text style={styles.currentPriceValue}>{item.closePrice}</Text>
+                                <View style={styles.priceDiv}>
+                                    <View style={styles.exitPriceDiv}>
+                                        <Text style={styles.exitPriceText}>Exit Price</Text>
+                                        <Text style={styles.exitPriceValue}>{(item.closePrice + (item.closePrice * 0.005)).toFixed(2)}</Text>
+                                    </View>
+                                    <View style={styles.stopLossDiv}>
+                                        <Text style={styles.stopLossText}>Stop Loss</Text>
+                                        <Text style={styles.stopLossValue}>{(item.closePrice - (item.closePrice * 0.005)).toFixed(2)}</Text>
+                                    </View>
+                                    <View style={styles.currentPriceDiv}>
+                                        <Text style={styles.currentPriceText}>Current Price</Text>
+                                        <Text style={styles.currentPriceValue}>{item.closePrice}</Text>
+                                    </View>
                                 </View>
                             </View>
                         </View>
@@ -107,6 +114,28 @@ const styles = StyleSheet.create({
         color: Colors.defaultRed,
     },
     mainContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    timeDiv: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    timeInnerDiv: {
+        backgroundColor: '#808080',
+        width: 150,
+        marginLeft: 45,
+        marginTop: -13,
+        borderBottomEndRadius: 25,
+        borderBottomStartRadius: 25
+    },
+    timeText: {
+        padding: 5,
+        marginLeft: 12,
+        color: '#ffffff'
+    },
+    contentDiv: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
@@ -178,7 +207,7 @@ const styles = StyleSheet.create({
     entryPriceValue: {
         paddingTop: 1,
         color: '#333333',
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
     stopLossText: {
         color: '#a6a6a6',
